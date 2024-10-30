@@ -1,12 +1,12 @@
+require('dotenv').config();
 const express = require('express');
-const stripe = require('stripe')('sk_test_51QDpl8Clmd0ulklqY0TmOULH6NbRxsTrENP6jJdmfdEnO8bmLeLo05fVkpoIzc6uiAkhfX1XzastEnqHHy7ByfC800ogmCTCej');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { v4: uuidv4 } = require('uuid'); // To generate unique session IDs
 const app = express();
 const cors = require('cors');
 
 app.use(express.json());
 app.use(cors())
-
 
 let sessionStore = {}; // Temporary in-memory store for session data
 
