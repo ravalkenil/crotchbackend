@@ -28,8 +28,11 @@ app.post('/create-checkout-session', async (req, res) => {
         }],
         mode: 'payment',
         metadata: { amount, sessionId }, // Store amount and session ID
-        success_url: `http://localhost:3000/success?sessionId=${sessionId}`, // Pass sessionId in URL
-        cancel_url: 'http://localhost:3000/cancel',
+        // success_url: `http://localhost:3000/success?sessionId=${sessionId}`, // Pass sessionId in URL
+        // cancel_url: 'http://localhost:3000/cancel',
+        success_url: `https://crotch-presale.vercel.app/success?sessionId=${sessionId}`, // Pass sessionId in URL
+        cancel_url: 'https://crotch-presale.vercel.app/cancel',
+        
     });
 
     sessionStore[sessionId] = { amount, used: false }; // Save session info
